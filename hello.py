@@ -73,13 +73,13 @@ def o():
     return render_template('nDisponivel.html', hora=datetime.utcnow());
 
 @app.route('/alunos', methods=['GET', 'POST'])
-def o():
+def a():
     return render_template('nDisponivel.html', hora=datetime.utcnow());
 
 @app.route('/disciplinas', methods=['GET', 'POST'])
-def o():
+def d():
     return render_template('nDisponivel.html', hora=datetime.utcnow());
 
 @app.route('/professores', methods=['GET', 'POST'])
-def o():
+def p():
     return render_template('nDisponivel.html', hora=datetime.utcnow());
