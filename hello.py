@@ -67,3 +67,19 @@ def internal_server_error(e):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html', hora=datetime.utcnow());
+
+@app.route('/ocorrencias', methods=['GET', 'POST'])
+def o():
+    return render_template('nDisponivel.html', hora=datetime.utcnow());
+
+@app.route('/alunos', methods=['GET', 'POST'])
+def o():
+    return render_template('nDisponivel.html', hora=datetime.utcnow());
+
+@app.route('/disciplinas', methods=['GET', 'POST'])
+def o():
+    return render_template('nDisponivel.html', hora=datetime.utcnow());
+
+@app.route('/professores', methods=['GET', 'POST'])
+def o():
+    return render_template('nDisponivel.html', hora=datetime.utcnow());
