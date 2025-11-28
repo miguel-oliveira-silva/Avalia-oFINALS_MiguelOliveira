@@ -13,11 +13,8 @@
 
 <div class="container">
 
-    <form action="/login" method="post" class="form-signin">
-      {{ form.hidden_tag() }}
-      
-      {{form.submit(class_="btn btn-large btn-primary")}}
-    </form>
 </div>
-<br>
+
+{{ wtf.quick_form(form) }}
+
 {% endblock %}
