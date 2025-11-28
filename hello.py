@@ -65,4 +65,4 @@ def internal_server_error(e):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html');
+    return render_template('index.html', current_time=datetime.utcnow());
