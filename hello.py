@@ -45,7 +45,7 @@ class User(db.Model):
 
 class NameForm(FlaskForm):
     curso = StringField('Qual o nome do curso', validators=[DataRequired()])
-    descricao = StringField('Descrição (250 caracteres)', validators=[DataRequired()])
+    descricao = TextAreaField('Descrição (250 caracteres)', validators=[DataRequired()])
     submit = SubmitField('Cadastrar')
 
 @app.shell_context_processor
