@@ -44,10 +44,9 @@ class User(db.Model):
 
 
 class NameForm(FlaskForm):
-    name = StringField('What is your name?', validators=[DataRequired()])
-    role = SelectField(u'Role?:', choices=[('Administrator'), ('Moderator'), ('User')])
-    submit = SubmitField('Submit')
-
+    curso = StringField('Qual o nome do curso', validators=[DataRequired()])
+    descricao = StringField('Descrição (250 caracteres)', validators=[DataRequired()])
+    submit = SubmitField('Cadastrar')
 
 @app.shell_context_processor
 def make_shell_context():
@@ -68,6 +67,11 @@ def internal_server_error(e):
 def index():
     return render_template('index.html', hora=datetime.utcnow());
 
+@app.route('/cursos', methods=['GET', 'POST'])
+def cursos():
+    form = NameForm()
+    return render_template('cursos.html', form=form);
+    
 @app.route('/ocorrencias', methods=['GET', 'POST'])
 def o():
     return render_template('nDisponivel.html', hora=datetime.utcnow());
