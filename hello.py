@@ -70,8 +70,6 @@ def index():
 @app.route('/cursos', methods=['GET', 'POST'])
 def cursos():
     form = NameForm()
-    user_all = Curso.query.all();
-    role_all = Descricao.query.all();
     return render_template('cursos.html', form=form);
     
 @app.route('/ocorrencias', methods=['GET', 'POST'])
