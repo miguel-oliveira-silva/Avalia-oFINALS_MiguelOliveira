@@ -23,24 +23,24 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-class Role(db.Model):
-    __tablename__ = 'roles'
+class Descricao(db.Model):
+    __tablename__ = 'descricao'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-    users = db.relationship('User', backref='role', lazy='dynamic')
+    texto = db.Column(db.String(64), unique=True)
+    curso = db.relationship('Curso', backref='descricao', lazy='dynamic')
 
     def __repr__(self):
-        return '<Role %r>' % self.name
+        return '<Descricao %r>' % self.texto
 
 
-class User(db.Model):
-    __tablename__ = 'users'
+class Curso(db.Model):
+    __tablename__ = 'curso'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, index=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    nome = db.Column(db.String(64), unique=True, index=True)
+    descricao_id = db.Column(db.Integer, db.ForeignKey('descricao.id'), unique=True)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<Curso %r>' % self.nome
 
 
 class NameForm(FlaskForm):
@@ -70,6 +70,8 @@ def index():
 @app.route('/cursos', methods=['GET', 'POST'])
 def cursos():
     form = NameForm()
+    user_all = Curso.query.all();
+    role_all = Descricao.query.all();
     return render_template('cursos.html', form=form);
     
 @app.route('/ocorrencias', methods=['GET', 'POST'])
